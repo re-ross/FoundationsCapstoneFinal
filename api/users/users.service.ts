@@ -34,7 +34,7 @@ export class UsersService {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  delete(id: number) {
+    return this.usersRepository.destroy({ where: { id } });
   }
 }
