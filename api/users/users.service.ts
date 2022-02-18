@@ -2,15 +2,29 @@ import { Injectable, Inject } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { Sequelize } from 'sequelize-typescript';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    throw new Error('Method not implemented.');
+  constructor(
+    @Inject('USERS_REPOSITORY')
+    private usersRepository: typeof User,
+    private sequelize: Sequelize,
+  ) {}
+  create(createUserDto: CreateUserDto): Promise<User> {
+    const user = new User();
+
+    user.firstName = createUserDto.firstName;
+    user.lastName = createUserDto.lastName;
+    user.userName = createUserDto.userName;
+    user.followers = createUserDto.followers;
+    user.following = createUserDto.following;
+
+    return user.save();
   }
 
-  findAll() {
-    return User;
+  async findAll(): Promise<User[]> {
+    return this.usersRepository.findAll<User>();
   }
 
   findOne(id: number) {
