@@ -23,15 +23,15 @@ export class PostsService {
     return this.postsRepository.findAll<Post>();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
+  findById(id: number): Promise<Post> {
+    return this.postsRepository.findOne({ where: { id } });
   }
 
   update(id: number, updatePostDto: UpdatePostDto) {
     return `This action updates a #${id} post`;
   }
 
-  remove(id: number) {
+  async delete(id: number) {
     return `This action removes a #${id} post`;
   }
 }
