@@ -1,43 +1,56 @@
-import { PrimaryKey, Column, Model, Table } from 'sequelize-typescript';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  PrimaryKey,
+  Table,
+  HasMany,
+  AutoIncrement,
+  Column,
+  Model,
+} from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
+import { Post } from 'posts/entities/post.entity';
 
 @Table
 export class User extends Model {
-  // @PrimaryKey
-  @Column({ defaultValue: uuidv4() })
-  // id: string;
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  userId: number;
+
   @ApiProperty({
     description: 'First name of user.',
     example: 'Timmy',
   })
+  @Column
   firstName: string;
 
   @ApiProperty({
     description: 'Last name of user',
     example: 'Tommy',
   })
-  // @Column
+  @Column
   lastName: string;
 
   @ApiProperty({
     description: 'Username',
     example: '@timmytommy',
   })
-  // @Column
+  @Column
   userName: string;
 
   @ApiProperty({
     description: 'Number of followers',
     example: 1,
   })
-  // @Column
+  @Column
   followers: number;
 
   @ApiProperty({
     description: 'Number following.',
     example: 1000,
   })
-  // @Column
+  @Column
   following: number;
+
+  @HasMany(() => Post)
+  posts: Post[];
 }

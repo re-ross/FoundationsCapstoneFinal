@@ -1,9 +1,9 @@
 import {
   Column,
-  Model,
   Table,
   BelongsTo,
   ForeignKey,
+  Model,
 } from 'sequelize-typescript';
 import { User } from '../../users/entities/user.entity';
 import { ApiProperty } from '@nestjs/swagger';
@@ -24,7 +24,7 @@ export class Post extends Model {
 
   @ForeignKey(() => User)
   @Column
-  user_id: number;
+  userId: number;
 
   @BelongsTo(() => User)
   user: User;

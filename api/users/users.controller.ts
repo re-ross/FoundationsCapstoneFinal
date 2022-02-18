@@ -25,13 +25,14 @@ export class UsersController {
   @Get()
   @ApiOkResponse({ description: 'All users retrieved.' })
   findAll() {
+    console.log(this.usersService.findAll());
     return this.usersService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ description: 'User with ${id} retrieved.' })
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  findById(@Param('id') id: string) {
+    return this.usersService.findById(+id);
   }
 
   @Patch(':id')

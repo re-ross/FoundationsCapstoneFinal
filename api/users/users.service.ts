@@ -8,8 +8,7 @@ import { Sequelize } from 'sequelize-typescript';
 export class UsersService {
   constructor(
     @Inject('USERS_REPOSITORY')
-    private usersRepository: typeof User,
-    private sequelize: Sequelize,
+    private usersRepository: typeof User, // private sequelize: Sequelize,
   ) {}
   create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
