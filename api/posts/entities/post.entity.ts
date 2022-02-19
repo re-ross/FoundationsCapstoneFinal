@@ -14,17 +14,18 @@ export class Post extends Model {
     description: 'Text content of post.',
     example: 'This is sample text 123, 123.',
   })
+  @Column
   content: string;
 
   @ApiProperty({
     description: 'Number of likes on a post',
     example: '15',
   })
+  @Column
   likes: number;
 
   @ForeignKey(() => User)
-  @Column
-  userId: number;
+  id: number;
 
   @BelongsTo(() => User)
   user: User;

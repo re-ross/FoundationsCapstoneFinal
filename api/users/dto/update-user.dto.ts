@@ -1,18 +1,19 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { User } from '../entities/user.entity';
-import { CreateUserDto } from './create-user.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {
-  @ApiProperty()
-  updateUserDto: CreateUserDto;
-  static toUser(updateUserDto: UpdateUserDto): User {
-    const user = new User();
-    user.firstName = updateUserDto.firstName;
-    user.lastName = updateUserDto.lastName;
-    user.userName = updateUserDto.userName;
-    user.following = updateUserDto.following;
-    user.followers = updateUserDto.followers;
-    return user;
-  }
+export class UpdateUserDto {
+  @ApiProperty({
+    description: 'First name of user.',
+    example: 'Timmy',
+  })
+  firstName: string;
+  @ApiProperty({
+    description: 'Last name of user',
+    example: 'Tommy',
+  })
+  lastName: string;
+  @ApiProperty({
+    description: 'Username',
+    example: '@timmytommy',
+  })
+  userName: string;
 }
