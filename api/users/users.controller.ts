@@ -3,9 +3,11 @@ import {
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
+  Query,
+  Patch,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -31,22 +33,21 @@ export class UsersController {
 
   @Get(':id')
   @ApiOkResponse({ description: 'User with ${id} retrieved.' })
-  findById(@Param('id') id: string) {
+  findById(@Param('id') id: number) {
     return this.usersService.findById(+id);
   }
 
-  @Patch(':id')
-  @ApiOkResponse({ description: 'User updated.' })
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
-  }
-
-  @Delete('/:id')
-  public async deleteUser(@Param('id') id: string) {
+  @Delete(':id')
+  public async deleteUser(@Param('id') id: number) {
     try {
       return await this.usersService.delete(+id);
     } catch (err) {
       throw err;
     }
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(id, updateUserDto);
   }
 }
