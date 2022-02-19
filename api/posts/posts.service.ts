@@ -27,10 +27,15 @@ export class PostsService {
   }
 
   update(id: number, updatePostDto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+    this.postsRepository.findOne({ where: { id } }).then((post) => {
+      const values = {
+        content: updatePostDto.content,
+      };
+      post.update(values);
+    });
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} post`;
+  delete(id: number) {
+    return this.postsRepository.destroy({ where: { id } });
   }
 }

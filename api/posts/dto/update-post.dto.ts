@@ -1,4 +1,9 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreatePostDto } from './create-post.dto';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class UpdatePostDto extends PartialType(CreatePostDto) {}
+export class UpdatePostDto {
+  @ApiProperty({
+    description: 'Updated string content of a post',
+    example: 'This is a sample post.',
+  })
+  content: string;
+}
