@@ -1,24 +1,32 @@
 import axios from "axios";
 import React from "react";
+import User from "./User"
 
-const baseURL = "http://localhost:3000/posts/1";
+const baseURL = "http://localhost:3000/users";
 
-function App() {
-  const [post, setPost] = React.useState(null);
+export default function App() {
+  const [users, setUsers] = React.useState(null);
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setPost(response.data);
+      setUsers(response.data);
     });
   }, []);
 
-  if (!post) return null;
+  if (!users) return null;
 
   return (
-    <div>
-      <h1>{post.content}</h1>
-    </div>
+    <div className="users">
+        {users.map((user) => (
+        <User
+            key={user.id}
+            firstName={user.firstName}
+            lastName={user.lastName}
+            userName={user.userName}
+            followers={user.followers}
+            following={user.following}
+         />
+        ))}
+      </div>
   );
 }
-
-export default App;
