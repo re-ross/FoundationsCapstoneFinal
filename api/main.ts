@@ -4,6 +4,18 @@ import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.SERVER_PORT || 3000;
+
+  const whitelist = ['http://localhost:3000', 'http://localhost:5000'];
+  app.enableCors({
+    origin: function (origin, callback) {
+      if (!origin || whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  });
 
   const config = new DocumentBuilder()
     .setTitle(`Ryan's Silly Little App`)
@@ -14,6 +26,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(port, () => {
+    console.log(`app running on ${port}`);
+  });
 }
 bootstrap();

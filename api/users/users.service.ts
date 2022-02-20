@@ -1,8 +1,15 @@
-import { Injectable, Inject } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  Injectable,
+  Inject,
+  HttpStatus,
+  HttpException,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { Sequelize } from 'sequelize-typescript';
+import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class UsersService {
@@ -30,11 +37,18 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  delete(id: number) {
+    return this.usersRepository.destroy({ where: { id } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  update(id: number, updateUserDto: UpdateUserDto) {
+    this.usersRepository.findOne({ where: { id } }).then((user) => {
+      const values = {
+        firstName: updateUserDto.firstName,
+        lastName: updateUserDto.lastName,
+        userName: updateUserDto.userName,
+      };
+      user.update(values);
+    });
   }
 }

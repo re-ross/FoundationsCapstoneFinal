@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React from "react";
+import User from "./User"
 
-function App() {
+const baseURL = "http://localhost:3000/users";
+
+export default function App() {
+  const [users, setUsers] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+
+  if (!users) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="users">
+        {users.map((user) => (
+        <User
+            key={user.id}
+            firstName={user.firstName}
+            lastName={user.lastName}
+            userName={user.userName}
+            followers={user.followers}
+            following={user.following}
+         />
+        ))}
+      </div>
   );
 }
-
-export default App;

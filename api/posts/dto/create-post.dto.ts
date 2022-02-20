@@ -6,4 +6,9 @@ export class CreatePostDto {
   })
   content: string;
   //   submittedBy: string;
+  @ApiProperty({
+    description: 'Number of likes',
+    example: '1',
+  })
+  likes: number;
 }
