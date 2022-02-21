@@ -17,6 +17,7 @@ function SidebarRight() {
 
     return (
         <div className="user">
+            <h3>Who to Follow</h3>
           <div className="user__header">
           </div>
           {users.map((user) => (
