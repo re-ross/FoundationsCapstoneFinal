@@ -1,13 +1,11 @@
 import {
   PrimaryKey,
   Table,
-  HasMany,
   AutoIncrement,
   Column,
   Model,
 } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
-import { Post } from 'posts/entities/post.entity';
 
 @Table
 export class User extends Model {
@@ -50,7 +48,4 @@ export class User extends Model {
   })
   @Column
   following: number;
-
-  @HasMany(() => Post)
-  posts: Post[];
 }

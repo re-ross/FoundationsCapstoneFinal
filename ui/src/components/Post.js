@@ -1,4 +1,3 @@
-
 import { Avatar } from "@material-ui/core";
 import {
   ChatBubbleOutline,
@@ -7,9 +6,9 @@ import {
   Repeat,
 } from "@material-ui/icons";
 import React from "react";
-import "./Post.css";
+import "../styling/Post.css";
 
-function Post({ displayName, username, text, image, avatar }) {
+function Post({ displayName, username, content, image, avatar }) {
   return (
     <div className="post">
       <div className="post__avatar">
@@ -26,7 +25,7 @@ function Post({ displayName, username, text, image, avatar }) {
             </h3>
           </div>
           <div className="post__headerDescription">
-            <p>{text}</p>
+            <p>{content}</p>
           </div>
         </div>
         <img src={image} alt="" />

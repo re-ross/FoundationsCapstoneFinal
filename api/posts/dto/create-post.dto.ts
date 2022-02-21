@@ -1,14 +1,32 @@
-import { ApiProperty, ApiBody } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 export class CreatePostDto {
   @ApiProperty({
-    description: 'String content of a post',
-    example: 'This is a sample post.',
+    description: 'Username of post author',
+    example: '@timmytommy',
+  })
+  userName: string;
+
+  @ApiProperty({
+    description: 'Name of author',
+    example: 'Timmy Tommy',
+  })
+  displayName: string;
+
+  @ApiProperty({
+    description: 'Content of post',
+    example: 'This is a string.',
   })
   content: string;
-  //   submittedBy: string;
+
   @ApiProperty({
-    description: 'Number of likes',
-    example: '1',
+    description: 'Image url for avatar',
+    example: 'https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg',
   })
-  likes: number;
+  avatar: string;
+
+  @ApiProperty({
+    description: 'Image url for image',
+    example: 'https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg',
+  })
+  image: string;
 }

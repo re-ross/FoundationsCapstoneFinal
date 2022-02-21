@@ -6,4 +6,9 @@ export class UpdatePostDto {
     example: 'This is a sample post.',
   })
   content: string;
+  @ApiProperty({
+    description: 'Image url for image',
+    example: 'https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg',
+  })
+  image: string;
 }

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import "./Feed.css";
+import React, {  useState } from "react";
+import "../styling/Feed.css";
 import Post from "./Post";
 import PostBox from "./PostBox";
+import axios from "axios"
+
+const baseURL = "http://localhost:3000/posts";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => doc.data()));
-    });
-  }, []);
+    React.useEffect(() => {
+      axios.get(baseURL).then((response) => {
+        setPosts(response.data);
+      });
+    }, []);
 
   return (
     <div className="feed">
@@ -20,9 +22,10 @@ function Feed() {
       <PostBox />
       {posts.map((post) => (
         <Post
+          key={post.id}
           displayName={post.displayName}
           username={post.username}
-          text={post.text}
+          content={post.content}
           avatar={post.avatar}
           image={post.image}
         />
