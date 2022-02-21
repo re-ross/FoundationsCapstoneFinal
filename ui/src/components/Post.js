@@ -1,13 +1,12 @@
 import { Avatar } from "@material-ui/core";
 import {
-  ChatBubbleOutline,
-  FavoriteBorder,
-  Publish,
-  Repeat,
+  FavoriteBorder
 } from "@material-ui/icons";
 import React from "react";
 import "../styling/Post.css";
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+// takes in id of comment, make delete axios req, passes id === post.id, onClick for DeleteIcon
 function Post({ displayName, username, content, image, avatar }) {
   return (
     <div className="post">
@@ -30,10 +29,9 @@ function Post({ displayName, username, content, image, avatar }) {
         </div>
         <img src={image} alt="" />
         <div className="post__footer">
-          <ChatBubbleOutline fontSize="small" />
-          <Repeat fontSize="small" />
+          <EditIcon fontSize="small" />
           <FavoriteBorder fontSize="small" />
-          <Publish fontSize="small" />
+          <DeleteIcon fontSize="small" />
         </div>
       </div>
     </div>

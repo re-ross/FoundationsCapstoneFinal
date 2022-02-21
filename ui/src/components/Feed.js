@@ -21,7 +21,7 @@ function Feed() {
         <h2>Home</h2>
       </div>
       <PostBox setRefresh={setRefresh}refresh={refresh}/>
-      {feed.map((post) => (
+      {[...feed].reverse().map((post) => (
         <Post
           key={post.id}
           displayName={post.displayName}

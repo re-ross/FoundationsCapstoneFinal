@@ -1,5 +1,5 @@
 import { Avatar, Button } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styling/PostBox.css";
 import axios from "axios";
 
@@ -10,18 +10,19 @@ function PostBox({setRefresh, refresh}) {
     userName: "@reross",
     displayName: "Ryan Ross",
     content: "",
-    avatar: "https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg",
+    avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQG0LNL3PKBeWw/profile-displayphoto-shrink_800_800/0/1517278606063?e=1651104000&v=beta&t=COA-_2KQU8cQ1cYAqj1sQygNtoaQu9WrJN3aioYhv6I",
     image: "",
 
   });
 
   function createPost(e) {
-    e.preventDefault();
+    // e.preventDefault();
     axios
       .post(baseURL, post)
       .then((response) => {
         console.log(response.data);
         setRefresh(!refresh);
+        setPost({...post,content:""});
     
       });
   }

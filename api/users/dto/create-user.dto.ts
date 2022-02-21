@@ -2,28 +2,18 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
   @ApiProperty({
-    description: 'First name of user.',
-    example: 'Timmy',
+    description: 'Display name of user.',
+    example: 'Timmy Tommy',
   })
-  firstName: string;
+  displayName: string;
   @ApiProperty({
-    description: 'Last name of user',
-    example: 'Tommy',
-  })
-  lastName: string;
-  @ApiProperty({
-    description: 'Username',
+    description: 'Username of user',
     example: '@timmytommy',
   })
   userName: string;
   @ApiProperty({
-    description: 'Number of followers',
-    example: 1,
+    description: 'Image url for avatar',
+    example: 'https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg',
   })
-  followers: number;
-  @ApiProperty({
-    description: 'Number following.',
-    example: 1000,
-  })
-  following: number;
+  avatar: string;
 }
