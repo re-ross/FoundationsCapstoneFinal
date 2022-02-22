@@ -10,7 +10,6 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Button } from "@material-ui/core";
-
 function Sidebar() {
   return (
     <div className="sidebar">
@@ -25,7 +24,8 @@ function Sidebar() {
 
       <Button variant="outlined" className="sidebar__post" fullWidth>
         Post
-      </Button>
+      </Button>  
+      <iframe title="spotify" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   );
 }

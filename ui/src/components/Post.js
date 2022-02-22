@@ -1,11 +1,7 @@
 import { Avatar } from "@material-ui/core";
-import {
-  FavoriteBorder
-} from "@material-ui/icons";
 import React from "react";
 import "../styling/Post.css";
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import axios from "axios";
 
 
@@ -15,6 +11,7 @@ function Post({ id, displayName, userName, content, image, avatar }) {
     axios.delete(`http://localhost:3000/posts/${id}`)
     .then(()=>console.log(`${id} deleted!`))
   }
+  
     
   
   return (
@@ -38,8 +35,6 @@ function Post({ id, displayName, userName, content, image, avatar }) {
         </div>
         <img src={image} alt="" />
         <div className="post__footer">
-          <EditIcon fontSize="small" />
-          <FavoriteBorder fontSize="small" />
           <DeleteIcon fontSize="small"onClick={(e)=>deletePost(id)}/>
         </div>
       </div>

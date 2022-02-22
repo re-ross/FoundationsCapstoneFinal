@@ -5,13 +5,18 @@ import Sidebar from "./components/Sidebar";
 import SidebarRight from "./components/SidebarRight"
 
 
-function App() {
+
+
+function App ()  {
+
   return (
     <div className="app">
       <Sidebar />
       <Feed />
       <SidebarRight />
-    </div>
+     </div>
+    
+    
   );
 }
 
