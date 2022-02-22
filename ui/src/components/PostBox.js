@@ -5,7 +5,7 @@ import axios from "axios";
 
 const baseURL = "http://localhost:3000/posts";
 
-function PostBox({setRefresh, refresh}) {
+function PostBox({setRefresh, refresh, feed, setFeed}) {
   const [post, setPost] = useState({
     userName: "@reross",
     displayName: "Ryan Ross",

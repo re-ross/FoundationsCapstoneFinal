@@ -6,8 +6,17 @@ import React from "react";
 import "../styling/Post.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import axios from "axios";
+
+
 // takes in id of comment, make delete axios req, passes id === post.id, onClick for DeleteIcon
-function Post({ displayName, username, content, image, avatar }) {
+function Post({ id, displayName, userName, content, image, avatar }) {
+  const deletePost = (id) =>{
+    axios.delete(`http://localhost:3000/posts/${id}`)
+    .then(()=>console.log(`${id} deleted!`))
+  }
+    
+  
   return (
     <div className="post">
       <div className="post__avatar">
@@ -17,9 +26,9 @@ function Post({ displayName, username, content, image, avatar }) {
         <div className="post__header">
           <div className="post__headerText">
             <h3>
-              {displayName}{" "}
+              {displayName}
               <span className="post__headerSpecial">
-                {username}
+                {userName}
               </span>
             </h3>
           </div>
@@ -31,7 +40,7 @@ function Post({ displayName, username, content, image, avatar }) {
         <div className="post__footer">
           <EditIcon fontSize="small" />
           <FavoriteBorder fontSize="small" />
-          <DeleteIcon fontSize="small" />
+          <DeleteIcon fontSize="small"onClick={(e)=>deletePost(id)}/>
         </div>
       </div>
     </div>

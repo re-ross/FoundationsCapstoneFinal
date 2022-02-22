@@ -12,7 +12,7 @@ function Feed() {
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setFeed(response.data);
-      console.log('hit');
+      console.log(response.data);
     });
   },[refresh]);
   return (
@@ -20,12 +20,14 @@ function Feed() {
       <div className="feed__header">
         <h2>Home</h2>
       </div>
-      <PostBox setRefresh={setRefresh}refresh={refresh}/>
+      <PostBox setRefresh={setRefresh}refresh={refresh}feed={feed} setFeed={setFeed}/>
       {[...feed].reverse().map((post) => (
         <Post
+          setFeed={setFeed}
           key={post.id}
+          id={post.id}
           displayName={post.displayName}
-          username={post.username}
+          userName={post.userName}
           content={post.content}
           avatar={post.avatar}
           image={post.image}
