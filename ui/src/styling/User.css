@@ -20,6 +20,6 @@
 
 .MuiAvatar-root .MuiAvatar-circular {
   margin-left: 40px;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
 }
