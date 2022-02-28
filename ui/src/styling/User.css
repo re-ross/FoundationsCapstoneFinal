@@ -1,0 +1,29 @@
+.user {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userCard {
+  display: flex;
+  width: 300px;
+  height: 125px;
+  border-radius: 30px;
+  background: #95b46a;
+  text-align: center;
+  margin: 10px;
+  margin-left: 20px;
+  font-size: 10px !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.MuiAvatar-root .MuiAvatar-circular {
+  margin-left: 40px;
+  justify-content: right;
+  align-items: center;
+}

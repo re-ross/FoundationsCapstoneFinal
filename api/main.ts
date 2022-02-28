@@ -18,10 +18,9 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle(`Ryan's Silly Little App`)
-    .setDescription(`Ryan's API description`)
+    .setTitle(`Postify Social Media`)
+    .setDescription(`Ryan's Silly Little App`)
     .setVersion('1.0')
-    .addTag('ryan')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

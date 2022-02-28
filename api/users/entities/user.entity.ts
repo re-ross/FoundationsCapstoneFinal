@@ -1,13 +1,11 @@
 import {
   PrimaryKey,
   Table,
-  HasMany,
   AutoIncrement,
   Column,
   Model,
 } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
-import { Post } from 'posts/entities/post.entity';
 
 @Table
 export class User extends Model {
@@ -17,18 +15,11 @@ export class User extends Model {
   id: number;
 
   @ApiProperty({
-    description: 'First name of user.',
-    example: 'Timmy',
+    description: 'Display name of user.',
+    example: 'Timmy Tommy',
   })
   @Column
-  firstName: string;
-
-  @ApiProperty({
-    description: 'Last name of user',
-    example: 'Tommy',
-  })
-  @Column
-  lastName: string;
+  displayName: string;
 
   @ApiProperty({
     description: 'Username',
@@ -38,19 +29,9 @@ export class User extends Model {
   userName: string;
 
   @ApiProperty({
-    description: 'Number of followers',
-    example: 1,
+    description: 'Image url for avatar',
+    example: 'https://www.aceshowbiz.com/images/photo/ryan_reynolds.jpg',
   })
   @Column
-  followers: number;
-
-  @ApiProperty({
-    description: 'Number following.',
-    example: 1000,
-  })
-  @Column
-  following: number;
-
-  @HasMany(() => Post)
-  posts: Post[];
+  avatar: string;
 }

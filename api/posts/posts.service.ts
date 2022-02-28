@@ -13,7 +13,11 @@ export class PostsService {
   create(createPostDto: CreatePostDto): Promise<Post> {
     const post = new Post();
 
+    post.userName = createPostDto.userName;
+    post.displayName = createPostDto.displayName;
     post.content = createPostDto.content;
+    post.avatar = createPostDto.avatar;
+    post.image = createPostDto.image;
 
     return post.save();
   }
@@ -30,6 +34,7 @@ export class PostsService {
     this.postsRepository.findOne({ where: { id } }).then((post) => {
       const values = {
         content: updatePostDto.content,
+        image: updatePostDto.image,
       };
       post.update(values);
     });

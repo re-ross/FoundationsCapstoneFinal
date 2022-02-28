@@ -1,15 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  Injectable,
-  Inject,
-  HttpStatus,
-  HttpException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class UsersService {
@@ -20,11 +13,9 @@ export class UsersService {
   create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
 
-    user.firstName = createUserDto.firstName;
-    user.lastName = createUserDto.lastName;
+    user.displayName = createUserDto.displayName;
     user.userName = createUserDto.userName;
-    user.followers = createUserDto.followers;
-    user.following = createUserDto.following;
+    user.avatar = createUserDto.avatar;
 
     return user.save();
   }
@@ -44,9 +35,9 @@ export class UsersService {
   update(id: number, updateUserDto: UpdateUserDto) {
     this.usersRepository.findOne({ where: { id } }).then((user) => {
       const values = {
-        firstName: updateUserDto.firstName,
-        lastName: updateUserDto.lastName,
+        displayName: updateUserDto.displayName,
         userName: updateUserDto.userName,
+        avatar: updateUserDto.avatar,
       };
       user.update(values);
     });
