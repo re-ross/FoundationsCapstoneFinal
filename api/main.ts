@@ -21,7 +21,6 @@ async function bootstrap() {
     .setTitle(`Postify Social Media`)
     .setDescription(`Ryan's Silly Little App`)
     .setVersion('1.0')
-    .addTag('ryan')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

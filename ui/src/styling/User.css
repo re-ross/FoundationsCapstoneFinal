@@ -1,6 +1,10 @@
 .user {
   margin-top: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .userCard {
@@ -13,7 +17,7 @@
   margin: 10px;
   margin-left: 20px;
   font-size: 10px !important;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
